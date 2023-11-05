@@ -200,20 +200,33 @@
 <div class="snow"></div>
 <div class="snow"></div>
 <div class="heading-text">
+  <img class="x-mas-tree" v-bind:src="christmasTree">
 <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
-<audio src="/assets/Mariah-Carey.mp3" controls>
-</audio>
+<img class="x-mas-tree" v-bind:src="christmasTree">
+<audio id="player" v-bind:src="audio"></audio>
+</div>
+<div class="audio-buttons">
+    <button onclick="document.getElementById('player').play()"><span>Play</span></button>
+    <button onclick="document.getElementById('player').pause()"><span>Pause</span></button>
+    <button onclick="document.getElementById('player').muted=!document.getElementById('player').muted"><span>Mute/ Unmute</span></button>
 </div>
   <WheelSpinner/>
 </template>
 
 <script>
+
 import WheelSpinner from './components/WheelSpinner.vue'
 
 export default {
   name: 'App',
   components: {
     WheelSpinner
+  },
+  data() {
+    return {
+      audio: require("./assets/Mariah-Carey.mp3"),
+      christmasTree: require("./assets/660-christmas-tree.svg")
+    }
   }
 }
 </script>
@@ -223,12 +236,10 @@ export default {
 h1,h2,h3,h4,h5, button, p {
   margin: 0px;
   font-family: 'Festive', cursive;
+  color: white;
 }
 
 body {
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
   background-color: #b71a3b;
 }
 
@@ -238,10 +249,34 @@ body {
   @return $random_range;
 }
 
+.audio-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  button {
+  background-color: #6a7045;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  span {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  }
+}
+
 .heading-text {
   margin-top: 50px;
   color: white;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .x-mas-tree {
+    width: 100px;
+  }
 }
 
 .snow {

@@ -2,8 +2,9 @@
   <div class="container">
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
+    <h1 style=" position: absolute; top: 25%;" v-if="isButtonDisabled">Come back tomorrow for more!</h1>
     <button class="wheel-button" :disabled="isButtonDisabled" @click="generateRandomNumber"><span>Click for today's gift!</span></button>
-    <h1 class="opened-numbers">Opened Numbers</h1>
+    <h1 class="opened-numbers">Opened Presents</h1>
     <div>
     <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">  
     <div v-for="prizes in removedItems" :key="prizes.id" :class="{ showNumber: showNumber }" class="present">
@@ -49,10 +50,10 @@ export default {
 
       const chosenOne = Math.floor(Math.random() * this.randomNumber);
 
-      // Start the countdown
-      this.startCountdown();
 
-      // Set a timeout to execute the remaining code after the countdown
+      this.startCountdown();
+      this.isButtonDisabled = true;
+
       setTimeout(() => {
         if (chosenOne >= 0 && chosenOne < this.wheelArray.length) {
           const removedItem = this.wheelArray.splice(chosenOne, 1)[0];
@@ -61,10 +62,9 @@ export default {
           localStorage.setItem("removedItems", JSON.stringify(this.removedItems));
           localStorage.setItem("wheelArray", JSON.stringify(this.wheelArray));
           this.buttonClicked = true;
-          this.isButtonDisabled = true;
           this.showNumber = true;
         }
-      }, 5000); // Wait for 5 seconds
+      }, 5000); 
     },
 
     startCountdown() {
@@ -175,7 +175,7 @@ export default {
 }
 
 .present {
-  width: 205px; /* Half the original width */
+  width: 205px;
   margin: 0 auto;
 }
 
@@ -241,7 +241,7 @@ export default {
   text-align: center;
   position: relative;
   height: 0;
-  top: 5px; /* Half the original value */
+  top: 5px;
   transition: all ease-out 0.7s;
 }
 
@@ -253,7 +253,7 @@ export default {
   font-size: 20px;
 }
 
-/* hover effects */
+
 .present:hover .lid {
   top: -100px;
   transform: rotateZ(10deg);
