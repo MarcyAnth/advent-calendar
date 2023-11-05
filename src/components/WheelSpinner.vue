@@ -2,11 +2,11 @@
   <div class="container">
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
-    <button class="wheel-button" :disabled="isButtonDisabled" @click="generateRandomNumber">Click for today's gift!</button>
+    <button class="wheel-button" :disabled="isButtonDisabled" @click="generateRandomNumber"><span>Click for today's gift!</span></button>
     <h1 class="opened-numbers">Opened Numbers</h1>
     <div>
     <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">  
-      <div v-for="prizes in removedItems" :key="prizes.id" :class="{ showNumber: showNumber }" class="present">
+    <div v-for="prizes in removedItems" :key="prizes.id" :class="{ showNumber: showNumber }" class="present">
     <div class="lid">
       <span></span>
     </div>
@@ -100,7 +100,7 @@ export default {
       },
     },
   },
-  mounted() {
+    mounted() {
     this.checkForNewDay();
     setInterval(this.checkForNewDay, 60000);
     const storedWheelArray = localStorage.getItem('wheelArray');
@@ -109,22 +109,26 @@ export default {
     } else {
       this.wheelArray = wheelData;
     }
-  },
+
+    const storedRemovedItems = localStorage.getItem('removedItems');
+    if (storedRemovedItems) {
+      this.removedItems = JSON.parse(storedRemovedItems);
+    }
+}
 };
 </script>
 
-<style>
+<style lang="scss">
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   flex-direction: column;
 }
 
 .opened-numbers {
-  font-family: 'Festive', cursive;
+
   color: white;
   margin: 100px 0;
 }
@@ -134,13 +138,19 @@ export default {
   border: 1px solid white;
   border-radius: 5px;
   color: white;
-  height: 50px;
-  font-family: 'Playpen Sans', cursive;
+  height: 100px;
+  width: 200px;
+  filter: drop-shadow(0 0 10px white);
   cursor: pointer;
+  span {
+    font-size: 20px;
+    letter-spacing: 2px;
+    
+  }
+
 } 
 .showNumber {
   animation: fade-in 5s;
-  font-family: 'Festive', cursive;
   color: white;
   flex-basis: 10%;
 }
@@ -148,13 +158,11 @@ export default {
 .counter {
   color: white;
   font-size: 5rem;
-  font-family: 'Festive', cursive;
 }
 
 .counter-placeholder {
   visibility: hidden;
   font-size: 5rem;
-  font-family: 'Festive', cursive;
 }
 
 @keyframes fade-in {

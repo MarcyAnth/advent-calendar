@@ -199,6 +199,11 @@
 <div class="snow"></div>
 <div class="snow"></div>
 <div class="snow"></div>
+<div class="heading-text">
+<h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
+<audio src="/assets/Mariah-Carey.mp3" controls>
+</audio>
+</div>
   <WheelSpinner/>
 </template>
 
@@ -215,18 +220,16 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Festive&family=Playpen+Sans&display=swap');
-h1 {
+h1,h2,h3,h4,h5, button, p {
   margin: 0px;
-}
-#app {
-  background-color: #b71a3b;
+  font-family: 'Festive', cursive;
 }
 
 body {
   height: 100vh;
   overflow: hidden;
-  filter: drop-shadow(0 0 10px white);
   margin: 0;
+  background-color: #b71a3b;
 }
 
 @function random_range($min, $max) {
@@ -235,7 +238,14 @@ body {
   @return $random_range;
 }
 
+.heading-text {
+  margin-top: 50px;
+  color: white;
+  text-align: center;
+}
+
 .snow {
+  filter: drop-shadow(0 0 10px white);
   $total: 200;
   position: absolute;
   width: 10px;
@@ -272,6 +282,5 @@ body {
   }
 }
 
-/* Add more @keyframes fall-n animations for additional snowflakes */
 
 </style>
