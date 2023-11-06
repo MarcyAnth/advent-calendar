@@ -2,11 +2,11 @@
   <div class="container">
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
-    <h1 style=" position: absolute; top: 25%;" v-if="isButtonDisabled">Come back tomorrow for more!</h1>
+    <h1 class="tomorrow-text" style=" position: absolute; top: 25%;" v-if="isButtonDisabled">Come back tomorrow for more!</h1>
     <button class="wheel-button" :disabled="isButtonDisabled" @click="generateRandomNumber"><span>Click for today's gift!</span></button>
     <h1 class="opened-numbers">Opened Presents</h1>
     <div>
-    <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">  
+    <div class="presents">  
     <div v-for="prizes in removedItems" :key="prizes.id" :class="{ showNumber: showNumber }" class="present">
     <div class="lid">
       <span></span>
@@ -133,6 +133,21 @@ export default {
   margin: 100px 0;
 }
 
+.presents {
+  display: flex; 
+  gap: 20px; 
+  flex-wrap: wrap; 
+  justify-content: center;
+  @media(max-width: 418px) {
+  flex-direction: column-reverse;
+  }
+}
+
+.tomorrow-text {
+  @media(max-width: 420px) {
+    top: 38% !important;
+  }
+}
 .wheel-button {
   background-color: #6a7045;
   border: 1px solid white;

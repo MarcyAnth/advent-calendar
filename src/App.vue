@@ -1,4 +1,6 @@
 <template>
+  <!-- snow -->
+<div>
 <div class="snow"></div>
 <div class="snow"></div>
 <div class="snow"></div>
@@ -199,23 +201,29 @@
 <div class="snow"></div>
 <div class="snow"></div>
 <div class="snow"></div>
+</div>
 <div class="heading-text">
   <img class="x-mas-tree" v-bind:src="christmasTree">
 <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
 <img class="x-mas-tree" v-bind:src="christmasTree">
-<audio id="player" v-bind:src="audio"></audio>
 </div>
+<!-- audio player here -->
 <div class="audio-buttons">
+<audio id="player" v-bind:src="audio" autoplay></audio>
     <button onclick="document.getElementById('player').play()"><span>Play</span></button>
     <button onclick="document.getElementById('player').pause()"><span>Pause</span></button>
     <button onclick="document.getElementById('player').muted=!document.getElementById('player').muted"><span>Mute/ Unmute</span></button>
-</div>
+  </div>
+  <!-- <SantaSlay/> -->
+<!-- <MusicPlayer/> -->
   <WheelSpinner/>
 </template>
 
 <script>
 
 import WheelSpinner from './components/WheelSpinner.vue'
+// import SantaSlay from './components/SantaSlay.vue'
+
 
 export default {
   name: 'App',
