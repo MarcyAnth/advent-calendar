@@ -1,5 +1,5 @@
 <template>
-  <!-- snow -->
+  <!-- snow i've tried to shove it in a component but doesn't work, sorry if you're looking at a bunch of divs -->
 <div>
 <div class="snow"></div>
 <div class="snow"></div>

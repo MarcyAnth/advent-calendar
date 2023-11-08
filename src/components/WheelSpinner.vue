@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <LocalStorageManager ref="localStorageManager" />
     <DateChecker @new-day="handleNewDay" />
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
@@ -28,11 +29,12 @@
 <script>
 import wheelData from '../../wheel-data.json';
 import DateChecker from './DateChecker.vue'
+import LocalStorageManager from './LocalStorageManager.vue';
 
 export default {
   name: 'WheelSpinner',
   components: {
-    DateChecker
+    DateChecker, LocalStorageManager
   },
   data() {
     return {
@@ -54,7 +56,6 @@ export default {
 
       const chosenOne = Math.floor(Math.random() * this.randomNumber);
 
-
       this.startCountdown();
       this.isButtonDisabled = true;
 
@@ -63,12 +64,14 @@ export default {
           const removedItem = this.wheelArray.splice(chosenOne, 1)[0];
           this.randomNumber -= 1;
           this.removedItems.push(removedItem);
-          localStorage.setItem("removedItems", JSON.stringify(this.removedItems));
-          localStorage.setItem("wheelArray", JSON.stringify(this.wheelArray));
+
+          this.$refs.localStorageManager.saveToLocalStorage('removedItems', this.removedItems);
+          this.$refs.localStorageManager.saveToLocalStorage('wheelArray', this.wheelArray);
+
           this.buttonClicked = true;
           this.showNumber = true;
         }
-      }, 5000); 
+      }, 5000);
     },
 
     startCountdown() {
