@@ -207,32 +207,24 @@
 <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
 <img class="x-mas-tree" v-bind:src="christmasTree">
 </div>
-<!-- audio player here -->
-<div class="audio-buttons">
-<audio id="player" v-bind:src="audio" autoplay></audio>
-    <button onclick="document.getElementById('player').play()"><span>Play</span></button>
-    <button onclick="document.getElementById('player').pause()"><span>Pause</span></button>
-    <button onclick="document.getElementById('player').muted=!document.getElementById('player').muted"><span>Mute/ Unmute</span></button>
-  </div>
-  <!-- <SantaSlay/> -->
-<!-- <MusicPlayer/> -->
+<MusicPlayer/>
   <WheelSpinner/>
 </template>
 
 <script>
 
 import WheelSpinner from './components/WheelSpinner.vue'
-// import SantaSlay from './components/SantaSlay.vue'
+import MusicPlayer from './components/MusicPlayer.vue'
+
 
 
 export default {
   name: 'App',
   components: {
-    WheelSpinner
+    WheelSpinner, MusicPlayer  
   },
   data() {
     return {
-      audio: require("./assets/Mariah-Carey.mp3"),
       christmasTree: require("./assets/660-christmas-tree.svg")
     }
   }

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <DateChecker @new-day="handleNewDay" />
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
     <h1 class="tomorrow-text" style=" position: absolute; top: 25%;" v-if="isButtonDisabled">Come back tomorrow for more!</h1>
@@ -26,15 +27,18 @@
 
 <script>
 import wheelData from '../../wheel-data.json';
+import DateChecker from './DateChecker.vue'
 
 export default {
   name: 'WheelSpinner',
+  components: {
+    DateChecker
+  },
   data() {
     return {
       randomNumber: 23,
       wheelArray: [],
       buttonClicked: false,
-      currentDate: new Date().toLocaleDateString(),
       removedItems: [],
       counter: 0,
       counting: false,
@@ -81,13 +85,9 @@ export default {
       }, 1000);
     },
 
-    checkForNewDay() {
-      const currentDate = new Date().toLocaleDateString();
-      if (currentDate !== this.currentDate) {
-        this.buttonClicked = false;
-        this.isButtonDisabled = false;
-        this.currentDate = currentDate;
-      }
+    handleNewDay() {
+      this.buttonClicked = false;
+      this.isButtonDisabled = false;
     },
   },
   computed: {
@@ -101,8 +101,6 @@ export default {
     },
   },
     mounted() {
-    this.checkForNewDay();
-    setInterval(this.checkForNewDay, 60000);
     const storedWheelArray = localStorage.getItem('wheelArray');
     if (storedWheelArray) {
       this.wheelArray = JSON.parse(storedWheelArray);
