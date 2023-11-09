@@ -12,8 +12,12 @@
 
 <script>
 
+import DateChecker from './DateChecker'
 export default {
     name: 'MusicPlayer',
+    components: {
+      DateChecker
+    },
   data() {
     return {
       audio: [require("../assets/Mariah-Carey.mp3"),
