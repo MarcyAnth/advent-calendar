@@ -1,214 +1,21 @@
 <template>
-  <!-- snow i've tried to shove it in a component but doesn't work, sorry if you're looking at a bunch of divs -->
-<div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-<div class="snow"></div>
-</div>
-<div class="heading-text">
-  <img class="x-mas-tree" v-bind:src="christmasTree">
-<h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
-<img class="x-mas-tree" v-bind:src="christmasTree">
-</div>
-<MusicPlayer/>
-  <WheelSpinner/>
+  <div>
+    <div 
+      class="snow"
+      v-for="i in SNOW_INTENSITY"
+      :key="i"
+    ></div>
+  </div>
+  <div class="heading-text">
+    <img class="x-mas-tree" v-bind:src="christmasTree" />
+    <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
+    <img class="x-mas-tree" v-bind:src="christmasTree" />
+  </div>
+  <MusicPlayer v-if="newDay !== null" :newDay="newDay" />
+  <WheelSpinner 
+    :openedTodaysGift="openedTodaysGift" 
+    @openGift="() => {this.openedTodaysGift = true}"
+  />
 </template>
 
 <script>
@@ -216,7 +23,7 @@
 import WheelSpinner from './components/WheelSpinner.vue'
 import MusicPlayer from './components/MusicPlayer.vue'
 
-
+const SNOW_INTENSITY = 200;
 
 export default {
   name: 'App',
@@ -225,8 +32,28 @@ export default {
   },
   data() {
     return {
-      christmasTree: require("./assets/660-christmas-tree.svg")
+      christmasTree: require("./assets/660-christmas-tree.svg"),
+      SNOW_INTENSITY: SNOW_INTENSITY,
+      openedTodaysGift: false,
+      pageLoadedOn: localStorage.getItem('pageLoadedOn'),
+      newDay: null
     }
+  },
+  mounted() {
+    if (!this.pageLoadedOn) {
+      this.pageLoadedOn = new Date().toLocaleDateString();
+      localStorage.setItem('pageLoadedOn', this.pageLoadedOn);
+    }
+    
+    if (this.pageLoadedOn !== new Date().toLocaleDateString()) {
+      this.newDay = true;
+      this.pageLoadedOn = new Date().toLocaleDateString();
+      localStorage.setItem('pageLoadedOn', this.pageLoadedOn);
+    } else {
+      this.newDay = false;
+    }
+
+    this.openedTodaysGift = localStorage.getItem('lastGiftDate') === new Date().toLocaleDateString();
   }
 }
 </script>
