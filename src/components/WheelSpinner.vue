@@ -1,63 +1,61 @@
 <template>
   <div class="container">
-    <LocalStorageManager ref="localStorageManager" />
-    <DateChecker @new-day="handleNewDay" />
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
-    <h1 class="tomorrow-text" style=" position: absolute; top: 25%;" v-if="isButtonDisabled">Come back tomorrow for more!</h1>
-    <button class="wheel-button" :disabled="isButtonDisabled" @click="generateRandomNumber"><span>Click for today's gift!</span></button>
+    <h1 class="tomorrow-text" style=" position: absolute; top: 25%;" v-if="openedTodaysGift">Come back tomorrow for more!</h1>
+    <button class="wheel-button" :disabled="openedTodaysGift" @click="generateRandomNumber"><span>Click for today's gift!</span></button>
     <h1 class="opened-numbers">Opened Presents</h1>
     <div>
-    <div class="presents">  
-    <div v-for="prizes in removedItems" :key="prizes.id" :class="{ showNumber: showNumber }" class="present">
-    <div class="lid">
-      <span></span>
+      <div class="presents">  
+        <div v-for="prizes in removedItems" :key="prizes.id" :class="{ showNumber: showNumber }" class="present">
+          <div class="lid">
+            <span></span>
+          </div>
+          <div class="promo">
+              <h1>{{ prizes.id }}</h1>
+          </div>
+          <div class="box">
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="promo">
-        <h1>{{ prizes.id }}</h1>
-    </div>
-    <div class="box">
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-    </div>
-  </div>
   </div>
 </template>
-
 <script>
 import wheelData from '../../wheel-data.json';
-import DateChecker from './DateChecker.vue'
-import LocalStorageManager from './LocalStorageManager.vue';
 
 export default {
   name: 'WheelSpinner',
-  components: {
-    DateChecker, LocalStorageManager
+  props: {
+    openedTodaysGift: {
+      type: Boolean,
+      required: true
+    }
   },
   data() {
     return {
       randomNumber: 23,
-      wheelArray: [],
+      wheelArray: JSON.parse(localStorage.getItem('wheelArray')) || wheelData,
       buttonClicked: false,
-      removedItems: [],
+      removedItems: JSON.parse(localStorage.getItem('removedItems')) || [],
       counter: 0,
       counting: false,
       showNumber: false
     };
   },
-  props: {},
   methods: {
     generateRandomNumber() {
-      if (this.isButtonDisabled) {
+      if (this.openedTodaysGift) {
         return;
       }
+
+      this.$emit('openGift');
 
       const chosenOne = Math.floor(Math.random() * this.randomNumber);
 
       this.startCountdown();
-      this.isButtonDisabled = true;
 
       setTimeout(() => {
         if (chosenOne >= 0 && chosenOne < this.wheelArray.length) {
@@ -65,15 +63,16 @@ export default {
           this.randomNumber -= 1;
           this.removedItems.push(removedItem);
 
-          this.$refs.localStorageManager.saveToLocalStorage('removedItems', this.removedItems);
-          this.$refs.localStorageManager.saveToLocalStorage('wheelArray', this.wheelArray);
+          localStorage.setItem('removedItems', JSON.stringify(this.removedItems));
+          localStorage.setItem('wheelArray', JSON.stringify(this.wheelArray));
+
+          localStorage.setItem('lastGiftDate', new Date().toLocaleDateString());
 
           this.buttonClicked = true;
           this.showNumber = true;
         }
       }, 5000);
     },
-
     startCountdown() {
       this.counting = true;
       this.counter = 5;
@@ -86,36 +85,8 @@ export default {
           this.counting = false;
         }
       }, 1000);
-    },
-
-    handleNewDay() {
-      this.buttonClicked = false;
-      this.isButtonDisabled = false;
-    },
-  },
-  computed: {
-    isButtonDisabled: {
-      get() {
-        return localStorage.getItem('isButtonDisabled') === 'true';
-      },
-      set(value) {
-        localStorage.setItem('isButtonDisabled', value);
-      },
-    },
-  },
-    mounted() {
-    const storedWheelArray = localStorage.getItem('wheelArray');
-    if (storedWheelArray) {
-      this.wheelArray = JSON.parse(storedWheelArray);
-    } else {
-      this.wheelArray = wheelData;
     }
-
-    const storedRemovedItems = localStorage.getItem('removedItems');
-    if (storedRemovedItems) {
-      this.removedItems = JSON.parse(storedRemovedItems);
-    }
-}
+  },
 };
 </script>
 
@@ -129,7 +100,6 @@ export default {
 }
 
 .opened-numbers {
-
   color: white;
   margin: 100px 0;
 }
