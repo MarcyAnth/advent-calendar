@@ -2,7 +2,7 @@
   <div class="container">
     <p class="counter" v-if="counting">{{ counter }}</p>
     <p class="counter-placeholder" v-if="!counting">0</p>
-    <h1 class="tomorrow-text" style=" position: absolute; top: 25%;" v-if="openedTodaysGift">Come back tomorrow for more!</h1>
+    <h1 class="tomorrow-text" style=" position: absolute; top: 25%;" v-if="this.buttonClicked">Come back tomorrow for more!</h1>
     <button class="wheel-button" :disabled="openedTodaysGift" @click="generateRandomNumber"><span>Click for today's gift!</span></button>
     <h1 class="opened-numbers">Opened Presents</h1>
     <div>
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      randomNumber: 23,
+      randomNumber: 24,
       wheelArray: JSON.parse(localStorage.getItem('wheelArray')) || wheelData,
       buttonClicked: false,
       removedItems: JSON.parse(localStorage.getItem('removedItems')) || [],

@@ -1,45 +1,61 @@
 <template>
-  <div>
+
     <div 
       class="snow"
       v-for="i in SNOW_INTENSITY"
       :key="i"
     ></div>
-  </div>
-  <div class="heading-text">
-    <img class="x-mas-tree" v-bind:src="christmasTree" />
-    <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
-    <img class="x-mas-tree" v-bind:src="christmasTree" />
-  </div>
-  <MusicPlayer v-if="newDay !== null" :newDay="newDay" />
-  <WheelSpinner 
+
+  <SantaSlay @first-load="handleFirstLoad" />
+  <div v-if="isWelcomeMessageHidden" :class="{fadey: animation}">
+    <div class="heading-text">
+      <img class="x-mas-tree" v-bind:src="christmasTree" />
+      <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
+      <img class="x-mas-tree" v-bind:src="christmasTree" />
+    </div>
+    <MusicPlayer v-if="newDay !== null" :newDay="newDay" />
+    <WheelSpinner 
     :openedTodaysGift="openedTodaysGift" 
     @openGift="() => {this.openedTodaysGift = true}"
   />
+</div>
 </template>
 
 <script>
 
 import WheelSpinner from './components/WheelSpinner.vue'
 import MusicPlayer from './components/MusicPlayer.vue'
+import SantaSlay from './components/SantaSlay.vue'
 
 const SNOW_INTENSITY = 200;
 
 export default {
   name: 'App',
   components: {
-    WheelSpinner, MusicPlayer  
+    WheelSpinner, MusicPlayer, SantaSlay
   },
   data() {
     return {
       christmasTree: require("./assets/660-christmas-tree.svg"),
       SNOW_INTENSITY: SNOW_INTENSITY,
       openedTodaysGift: false,
-      pageLoadedOn: localStorage.getItem('pageLoadedOn'),
-      newDay: null
+      pageLoadedOn: localStorage.getItem('pageLoadedOn'), 
+      firstLoad: localStorage.getItem('welcomeMessage') !== 'false',
+      newDay: null,
+      animation: false
     }
   },
+  methods:{
+
+  },
+  computed: {
+    isWelcomeMessageHidden() {
+      return localStorage.getItem('welcomeMessage') === 'false';
+    },
+  },
   mounted() {
+    console.log(this.firstLoad)
+    this.animation = true
     if (!this.pageLoadedOn) {
       this.pageLoadedOn = new Date().toLocaleDateString();
       localStorage.setItem('pageLoadedOn', this.pageLoadedOn);
@@ -55,7 +71,7 @@ export default {
 
     this.openedTodaysGift = localStorage.getItem('lastGiftDate') === new Date().toLocaleDateString();
   }
-}
+  }
 </script>
 
 <style lang="scss">
@@ -64,6 +80,14 @@ h1,h2,h3,h4,h5, button, p {
   margin: 0px;
   font-family: 'Festive', cursive;
   color: white;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 body {
@@ -141,6 +165,19 @@ body {
         transform: translate($random-x-end-yoyo, 100vh) scale($random-scale);
       }
     }
+  }
+}
+
+.fadey {
+  animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
