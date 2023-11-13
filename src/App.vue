@@ -94,6 +94,7 @@ h1,h2,h3,h4,h5, button, p {
 
 body {
   background-color: #b71a3b;
+  overflow: visible;
 }
 
 @function random_range($min, $max) {
