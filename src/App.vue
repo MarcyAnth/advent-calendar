@@ -8,6 +8,7 @@
 
   <SantaSlay @first-load="handleFirstLoad" />
   <div v-if="isWelcomeMessageHidden" :class="{fadey: animation}">
+    <Reindeer/>
     <div class="heading-text">
       <img class="x-mas-tree" v-bind:src="christmasTree" />
       <h1>Merry Christmas Vicky... Ho, Ho,Ho.</h1>
@@ -26,13 +27,14 @@
 import WheelSpinner from './components/WheelSpinner.vue'
 import MusicPlayer from './components/MusicPlayer.vue'
 import SantaSlay from './components/SantaSlay.vue'
+import Reindeer from './components/Reindeer.vue'
 
 const SNOW_INTENSITY = 200;
 
 export default {
   name: 'App',
   components: {
-    WheelSpinner, MusicPlayer, SantaSlay
+    WheelSpinner, MusicPlayer, SantaSlay, Reindeer
   },
   data() {
     return {

@@ -223,7 +223,6 @@ export default {
 
 .promo {
   font-size: 15px;
-  color: white;
   text-align: center;
   position: relative;
   height: 0;
@@ -231,8 +230,8 @@ export default {
   transition: all ease-out 0.7s;
 }
 
-.promo p {
-  font-size: 12px;
+.promo h1 {
+  color: #6a7045;
 }
 
 .promo h2 {
