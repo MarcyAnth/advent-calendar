@@ -52,10 +52,10 @@ export default {
     };
   },
   mounted() {
-    if(this.newDay) {
-      this.index = (this.index + 1) % this.audio.length;
+    if (this.newDay) {
+      this.index = (parseInt(this.index) + 1) % this.audio.length;
       localStorage.setItem('musicIndex', this.index);
-    }
+  }
   }
 };
 </script>
